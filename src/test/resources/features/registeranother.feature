@@ -17,7 +17,7 @@ Feature: Register Function
     Then The user verifies the registered Message
     Examples:
       | Gender | First Name | Last Name | Email                  | Password | Confirm Password |
-      | Male   | Amasya     | Suluova   | ensonmail.05@gmail.com | merkez   | merkez           |
+      | Male   | Amasya     | Suluova   | ensonmaill.05@gmail.com | merkez   | merkez           |
 
   Scenario Outline: The user can register on the site without selecting "Gender"
     And The user enters "FirstName" "<First Name>"
@@ -29,7 +29,7 @@ Feature: Register Function
     Then The user verifies the registered Message
     Examples:
       | First Name | Last Name | Email                    | Password | Confirm Password |
-      | Amasya     | Suluova   | ensonmailim.05@gmail.com | merkez   | merkez           |
+      | Amasya     | Suluova   | ensonmailimm.05@gmail.com | merkez   | merkez           |
 
 
   Scenario Outline:The user cannot create an account without adding the invalid info.
@@ -49,7 +49,9 @@ Feature: Register Function
       | Male   | Amasya     | Suluova   | ensonmail.05@gmail.com |          |                  |
       | Male   | Amasya     | Suluova   | ensonmail.05@gmailcom  | mer      | mer              |
       | Male   | Amasya     | Suluova   | ensonmail.05gmail.com  | merkez   | merkez           |
-      | Male   | Amasya     | Suluova   | ensonmail.05@gmailcom  | merkez   | merkez           |
+      | Male   | !""!"$     | Suluova   | ensonmail.05@gmailcom  | merkez   | merkez           |
+      | Male   | Amasya     | !""!"$    | ensonmail.05@gmailcom  | merkez   | merkez           |
+      | Male   | Amasya     | Suluova   | !""!"$@gmailcom        | merkez   | merkez           |
 
   Scenario Outline:The user can not create an account again with an existing email address.
     When The user selects the Gender "<Gender>"
@@ -62,7 +64,7 @@ Feature: Register Function
     Then The user verifies the Existing Email Error Message
     Examples:
       | Gender | First Name | Last Name | Email                  | Password | Confirm Password |
-      | Male   | Amasya     | Suluova   | ensonmail.05@gmail.com | merkez   | merkez           |
+      | Male   | Amasya     | Suluova   | ensonmaill.05@gmail.com | merkez   | merkez           |
 
 
 
