@@ -5,8 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage{
-    @FindBy(linkText = "Log in")
-    public WebElement loginBtn;
+
     @FindBy(css = "[id='Email']")
     public WebElement emailInputBox;
     @FindBy(css = "[id='Password']")
@@ -20,7 +19,5 @@ public class LoginPage extends BasePage{
         emailInputBox.sendKeys(email);
         passwordInputBox.sendKeys(password);
         submitBtn.click();
-        BrowserUtils.waitFor(2);
     }
-
 }

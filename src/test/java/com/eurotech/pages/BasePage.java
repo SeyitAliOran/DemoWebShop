@@ -18,6 +18,10 @@ public abstract class BasePage { // BasePage uzerinden obje olusturmayacagimiz i
         PageFactory.initElements(Driver.get(),this);
     }
     WebDriverWait wait=new WebDriverWait(Driver.get(),10);
+    @FindBy(linkText = "Log in")
+    public WebElement loginBtn;
 
+    @FindBy(linkText = "Shopping cart")
+    public WebElement shoppingCartBtn;
 
 }

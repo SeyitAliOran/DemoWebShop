@@ -25,7 +25,7 @@ public class Hooks { // kanca demek.Butun testlerimizden once bu kancayi takiyor
                 scenario.attach(screenschot,"image/png","screenshot");
             }
        // System.out.println("\tThis is coming from After Method");
-        Driver.closeDriver();
+       // Driver.closeDriver();
     }
     @Before("@db") // tag uzerinden secilen test senaryolari icin aktif hala gelebilir.
     public void setUpDB(){
