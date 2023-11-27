@@ -17,6 +17,7 @@ public class Hooks { // kanca demek.Butun testlerimizden once bu kancayi takiyor
        // System.out.println("\tThis is coming from Before Method");
         Driver.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Driver.get().manage().window().maximize();
+        //Driver.get().get(ConfigurationReader.get("url"));
     }
     @After
     public void tearDown(Scenario scenario){  // screenshot almak icin  olusturduk
