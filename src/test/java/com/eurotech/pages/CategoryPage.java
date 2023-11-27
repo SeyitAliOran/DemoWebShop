@@ -1,8 +1,7 @@
 package com.eurotech.pages;
 
-import com.eurotech.utilities.BrowserUtils;
+
 import com.eurotech.utilities.Driver;
-import org.apache.commons.math3.exception.MathInternalError;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
