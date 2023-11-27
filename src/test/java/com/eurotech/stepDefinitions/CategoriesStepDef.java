@@ -38,7 +38,10 @@ public class CategoriesStepDef {
     public void the_user_clicks_on_the_menu_and_verifies_that_the_option_is_visible_in_the_menu(String option) {
 
         categoryPage.userSelectsMenu(categoryPage.productsOrderBy,option);
+
+
     }
+
 
 
 }

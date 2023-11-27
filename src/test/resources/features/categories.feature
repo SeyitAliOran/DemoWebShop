@@ -13,8 +13,21 @@ Feature: The user should be able to easily sort the products on the shopping sit
       | Apparel & Shoes   | Name: A to Z       |
       | Digital downloads | Price: Low to High |
       | Apparel & Shoes   | Price: High to Low |
-     # | Jewelry           | Name: Z to A       |
-      #| Gift Cards        | Price: Low to High |
+      | Digital downloads | Name: Z to A       |
+      | Apparel & Shoes   | Price: Low to High |
+      | Digital downloads | Created on         |
+
+
+  Scenario Outline: 'Sort by' default option test in the Computers categories.
+    When The user navigate to a Computers category
+    And The user clicks "<subMenu>"
+    Then The user clicks on the sort by menu and verifies that the default Position option is visible in the menu.
+    Examples:
+      | subMenu     |
+      | Desktops    |
+      | Notebooks   |
+      | Accessories |
+
 
 
 

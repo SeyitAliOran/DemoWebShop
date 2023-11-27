@@ -2,6 +2,8 @@ package com.eurotech.pages;
 
 import com.eurotech.utilities.BrowserUtils;
 import com.eurotech.utilities.Driver;
+import org.apache.commons.math3.exception.MathInternalError;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,10 +17,10 @@ public class CategoryPage extends BasePage {
     public WebElement sortBy;
     @FindBy(id = "products-orderby")
     public WebElement productsOrderBy;
-
-
-
-
+    @FindBy(xpath = "//ul[@class='top-menu']/li[2]/a")
+    public WebElement computers;
+    @FindBy(xpath = "//option[text()='Position']")
+    public WebElement defaultPosition;
 
     public WebElement categoriesMenu(String category) {
         List<WebElement> categoryMenu = Driver.get().findElements(By.xpath("//li[@class='inactive']"));
@@ -30,15 +32,26 @@ public class CategoryPage extends BasePage {
         }
         return null;
     }
-
-    public void userSelectsMenu(WebElement element,String option) {
-        Select select=new Select(element);
+    public void userSelectsMenu(WebElement element, String option) {
+        Select select = new Select(element);
         select.selectByVisibleText(option);
 
-//        WebElement optionMenu = Driver.get().findElement(By.xpath("//option[text()='" + opt + "']"));
-//        Select select = new Select(optionMenu);
-//        select.selectByVisibleText(opt);
+    }
 
+    public WebElement computerMenu(String product) {
+        List<WebElement> computerSubMenu = Driver.get().findElements(By.xpath("//ul[@class='sublist']/li/a"));
+        for (WebElement subMenu : computerSubMenu) {
+            if (subMenu.getText().equals(product)) {
+                return subMenu;
+            }
+        }
+        return null;
+    }
+
+    public void verifyDefaultOptions() {
+        String actualText = defaultPosition.getText();
+        String expectedText = "Position";
+        Assert.assertEquals(expectedText, actualText);
 
     }
 }
