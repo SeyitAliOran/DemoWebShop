@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.Collections;
 import java.util.List;
 
-public class HomePage extends BasePage{
+public class HomePage extends BasePage {
     @FindBy(xpath = "(//a[@href='/books'])[3]")
     public WebElement booksCategoriBtn;
     @FindBy(xpath = "//span[.='Display']")
@@ -24,25 +24,49 @@ public class HomePage extends BasePage{
     public WebElement displaySelectBtn;
     @FindBy(className = "item-box")
     public WebElement productNumberperPage;
+    @FindBy(tagName = "h1")
+    public WebElement headerMessage;
+    @FindBy(xpath = "(//a[@href='/desktops'])[3]")
+    public WebElement desktopsBtn;
+    @FindBy(xpath = "(//a[@href='/notebooks'])[3]")
+    public WebElement notebooksBtn;
+    @FindBy(xpath = "(//a[@href='/accessories'])[3]")
+    public WebElement accessoriesBtn;
 
 
-    public void verifyDisplayMenu(){
-        String actualText = displayMenu.getText();
-        String expectedText = "Display";
-        Assert.assertEquals(expectedText,actualText);
+    public void viewCategories(String category) {
+        Driver.get().findElement(By.xpath("(//a[@href='/" + category + "'])[3]")).click();
+//        if (category.equals("computers")){
+//            desktopsBtn.click();
+//            notebooksBtn.click();
+//            accessoriesBtn.click();
+//        }
     }
 
-    public void displayDropDown(){
+    public void sortProduct(String sort1, String sort2, String sort3) {
+        Select select = new Select(displaySelectBtn);
+        select.selectByVisibleText(sort1);
+        select.selectByVisibleText(sort2);
+        select.selectByVisibleText(sort3);
+
+
+    }
+
+
+
+
+
+    public void displayDropDown() {
         Select select = new Select(displaySelectBtn);
         select.selectByValue("https://demowebshop.tricentis.com/desktops?pagesize=4");
     }
 
-    public void verifyFourItems(){
+    public void verifyFourItems() {
         List<WebElement> productList = Driver.get().findElements(By.className("item-box"));
         System.out.println("productList.size() = " + productList.size());
         int actualProductCount = productList.size();
         int expectedProductCount = 4;
-        Assert.assertEquals(expectedProductCount,actualProductCount);
+        Assert.assertEquals(expectedProductCount, actualProductCount);
 
     }
 
